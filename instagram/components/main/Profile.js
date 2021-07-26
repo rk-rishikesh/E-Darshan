@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, View, Text, Image, FlatList, Button } from 'react-native'
-
+import ImagePicker from 'react-native-image-picker';
 import firebase from 'firebase'
 require('firebase/firestore')
 import { connect } from 'react-redux'
@@ -15,7 +15,8 @@ function Profile(props) {
 
         if (props.route.params.uid === firebase.auth().currentUser.uid) {
             setUser(currentUser)
-            setUserPosts(posts)
+            setUserPosts(posts)               
+                 
         }
         else {
             firebase.firestore()
@@ -24,7 +25,17 @@ function Profile(props) {
                 .get()
                 .then((snapshot) => {
                     if (snapshot.exists) {
+                        {console.log(snapshot)} 
                         setUser(snapshot.data());
+                        const uid = snapshot.docs[0].ref.path.split('/')[1];
+                        const user = getState().usersState.users.find(el => el.uid === uid);
+        
+        
+                        let posts = snapshot.docs.map(doc => {
+                            const data = doc.data();
+                            const id = doc.id;
+                            return { id, ...data, user }
+                        })
                     }
                     else {
                         console.log('does not exist')
@@ -83,6 +94,7 @@ function Profile(props) {
             <View style={styles.containerInfo}>
                 <Text>{user.name}</Text>
                 <Text>{user.email}</Text>
+                <Text>Images</Text>
 
                 {props.route.params.uid !== firebase.auth().currentUser.uid ? (
                     <View>
@@ -107,17 +119,19 @@ function Profile(props) {
             </View>
 
             <View style={styles.containerGallery}>
+            {/* <Text>Imagesfeed</Text> */}
                 <FlatList
-                    numColumns={3}
+                    numColumns={2}
                     horizontal={false}
                     data={userPosts}
-                    renderItem={({ item }) => (
-                        <View
-                            style={styles.containerImage}>
+                    renderItem={({ item }) =>
+                    (
+                        <View style={styles.containerImage}>
+                            {console.log(item,"Itms")}
 
                             <Image
-                                style={styles.image}
-                                source={{ uri: item.downloadURL }}
+                                style={{width: '100%', height: 200,resizeMode : 'stretch' }}
+                                source={{ uri: item.downloadURL}}
                             />
                         </View>
 

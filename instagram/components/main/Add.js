@@ -80,12 +80,6 @@ export default function Add({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container:{
-    flex:1,
-  },
-  camera:{
-    flex:1,
-  },
   cameraContainer: {
     flex: 1,
     flexDirection: 'row'
@@ -93,7 +87,6 @@ const styles = StyleSheet.create({
   fixedRatio: {
     flex: 1,
     aspectRatio: 1
-  },
+  }
 
-});
-
+})

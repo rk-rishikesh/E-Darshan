@@ -51,7 +51,7 @@ function Feed(props) {
                             style={styles.containerImage}>
                             <Text style={styles.container}>{item.user.name}</Text>
                             <Image
-                                style={styles.image}
+                                style={{width: '100%', height: 200,resizeMode : 'stretch' }}
                                 source={{ uri: item.downloadURL }}
                             />
                             { item.currentUserLike ?
@@ -104,8 +104,8 @@ const styles = StyleSheet.create({
 const mapStateToProps = (store) => ({
     currentUser: store.userState.currentUser,
     following: store.userState.following,
-    feed: store.userState.feed,
-    userFollowingLoaded: store.userState.userFollowingLoaded,
+    feed: store.usersState.feed,
+    usersFollowingLoaded: store.usersState.usersFollowingLoaded,
 
 
 })
