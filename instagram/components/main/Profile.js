@@ -94,7 +94,7 @@ function Profile(props) {
             <View style={styles.containerInfo}>
                 <Text>{user.name}</Text>
                 <Text>{user.email}</Text>
-                <Text>Images</Text>
+                {/* <Text>Images</Text> */}
 
                 {props.route.params.uid !== firebase.auth().currentUser.uid ? (
                     <View>

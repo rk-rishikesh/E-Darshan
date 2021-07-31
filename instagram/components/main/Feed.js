@@ -19,26 +19,26 @@ function Feed(props) {
 
     }, [props.usersFollowingLoaded, props.feed])
 
-    const onLikePress = (userId, postId) => {
-        firebase.firestore()
-            .collection("posts")
-            .doc(userId)
-            .collection("userPosts")
-            .doc(postId)
-            .collection("likes")
-            .doc(firebase.auth().currentUser.uid)
-            .set({})
-    }
-    const onDislikePress = (userId, postId) => {
-        firebase.firestore()
-            .collection("posts")
-            .doc(userId)
-            .collection("userPosts")
-            .doc(postId)
-            .collection("likes")
-            .doc(firebase.auth().currentUser.uid)
-            .delete()
-    }
+    // const onLikePress = (userId, postId) => {
+    //     firebase.firestore()
+    //         .collection("posts")
+    //         .doc(userId)
+    //         .collection("userPosts")
+    //         .doc(postId)
+    //         .collection("likes")
+    //         .doc(firebase.auth().currentUser.uid)
+    //         .set({})
+    // }
+    // const onDislikePress = (userId, postId) => {
+    //     firebase.firestore()
+    //         .collection("posts")
+    //         .doc(userId)
+    //         .collection("userPosts")
+    //         .doc(postId)
+    //         .collection("likes")
+    //         .doc(firebase.auth().currentUser.uid)
+    //         .delete()
+    // }
     return (
         <View style={styles.container}>
             <View style={styles.containerGallery}>
@@ -54,7 +54,7 @@ function Feed(props) {
                                 style={{width: '100%', height: 200,resizeMode : 'stretch' }}
                                 source={{ uri: item.downloadURL }}
                             />
-                            { item.currentUserLike ?
+                            {/* { item.currentUserLike ?
                                 (
                                     <Button
                                         title="Dislike"
@@ -66,11 +66,13 @@ function Feed(props) {
                                         title="Like"
                                         onPress={() => onLikePress(item.user.uid, item.id)} />
                                 )
-                            }
+                            } */}
+                            
                             <Text
                                 onPress={() => props.navigation.navigate('Comment', { postId: item.id, uid: item.user.uid })}>
                                 View Comments...
                                 </Text>
+                                <br></br>
                         </View>
 
                     )}
