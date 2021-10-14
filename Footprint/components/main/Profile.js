@@ -1,9 +1,95 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, View, Text, Image, FlatList, Button } from 'react-native'
 import ImagePicker from 'react-native-image-picker';
+import { 
+    TouchableOpacity, 
+    TextInput,
+    Platform,
+    ScrollView,
+    StatusBar,
+    ImageBackground ,
+    Dimensions,
+    RefreshControl,
+    ActivityIndicator,
+    TouchableNativeFeedback
+} from 'react-native';
+import * as Animatable from 'react-native-animatable';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import firebase from 'firebase'
 require('firebase/firestore')
 import { connect } from 'react-redux'
+
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#ffffff'
+    },
+    containerInfo: {
+            margin: 20
+    },
+    containerimg: {
+        flex: 3,
+        flexDirection: 'row',
+    },
+    containerGallery: {
+        flex: 1
+    },
+    containerImage: {
+        flex: 1 / 3
+
+    },
+    image: {
+        flex: 1,
+        aspectRatio: 1 / 1,
+        
+    },
+    header: {
+        flex: 1,
+        justifyContent: 'center',
+        paddingHorizontal: 20,
+        paddingBottom: 50
+    },
+    footer: {
+        
+        backgroundColor: '#fff',
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
+        paddingHorizontal: 20,
+        paddingVertical: 30,
+        alignContent: 'flex-start'
+    },
+    text_header: {
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: 40
+    },
+        containerInfo: {
+        margin: 20
+    },
+    text_footer: {
+        color: '#05375a',
+        fontSize: 13,
+        marginLeft: 10
+    },
+    action: {
+        flexDirection: 'column',
+        marginTop: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#f2f2f2',
+        paddingBottom: 5
+    },
+    textInput: {
+        flex: 1,
+        marginTop: -12,
+        paddingLeft: 10,
+        color: '#05375a',
+    },
+    button: {
+        marginTop: 20,
+       
+    }
+  });
 
 function Profile(props) {
     const [userPosts, setUserPosts] = useState([]);
@@ -90,10 +176,22 @@ function Profile(props) {
         return <View />
     }
     return (
+  <View>
+      
         <View style={styles.container}>
             <View style={styles.containerInfo}>
-                <Text>{user.name}</Text>
-                <Text>{user.email}</Text>
+                <View style= {{flexDirection:'row'}}>
+                                <FontAwesome 
+                                name="user-circle"
+                                color="#05375a"
+                                size={50}
+                                />
+                <Text style={styles.text_footer}>{user.name}</Text>
+                </View>
+                <View style= {{flexDirection:'column', marginLeft: 50 , marginTop:-30}}>
+                <Text style={styles.text_footer}>{user.email}</Text>
+                </View>
+                
                 {/* <Text>Images</Text> */}
 
                 {props.route.params.uid !== firebase.auth().currentUser.uid ? (
@@ -112,10 +210,13 @@ function Profile(props) {
                             )}
                     </View>
                 ) :
-                    <Button
+                <View style= {styles.button}>
+                    <Button 
                         title="Logout"
                         onPress={() => onLogout()}
-                    />}
+                        color="#2f4f4f"
+                    />
+                    </View>}
             </View>
 
             <View style={styles.containerGallery}>
@@ -140,29 +241,29 @@ function Profile(props) {
                 />
             </View>
         </View>
-
+        </View>   
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    containerInfo: {
-        margin: 20
-    },
-    containerGallery: {
-        flex: 1
-    },
-    containerImage: {
-        flex: 1 / 3
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//     },
+//     containerInfo: {
+//         margin: 20
+//     },
+//     containerGallery: {
+//         flex: 1
+//     },
+//     containerImage: {
+//         flex: 1 / 3
 
-    },
-    image: {
-        flex: 1,
-        aspectRatio: 1 / 1
-    }
-})
+//     },
+//     image: {
+//         flex: 1,
+//         aspectRatio: 1 / 1
+//     }
+// })
 const mapStateToProps = (store) => ({
     currentUser: store.userState.currentUser,
     posts: store.userState.posts,

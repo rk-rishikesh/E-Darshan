@@ -50,9 +50,9 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
       borderTopLeftRadius: 30,
       borderTopRightRadius: 30,
-      paddingHorizontal: 40,
-      paddingVertical: 40,
-      marginLeft: 54,
+      paddingHorizontal: 70,
+      paddingVertical: 70,
+      marginLeft: 44,
       alignContent: 'flex-start'
   },
     text_header: {
@@ -151,11 +151,13 @@ export default function Add({ navigation }) {
             animation="fadeInUpBig"
             style={styles.footer}
         >
-           <Button title="Take Picture" onPress={() => takePicture()} />
-           <Button title="Pick Image From Gallery" onPress={() => pickImage()} />
-      <Button title="Save" onPress={() => navigation.navigate('Save', { image })} />  
+           <Button title="Take Picture" onPress={() => takePicture()} color="#db7093"/> <br></br>
+           <Button title="Pick Image From Gallery" onPress={() => pickImage()} color="#db7093" /><br></br>
+      <Button title="Save" color="#db7093"  onPress={() => navigation.navigate('Save', { image })} />  <br></br>
       <Button
         title="Flip Image"
+        color="#db7093"
+        marginTop='20'
         onPress={() => {
           setType(
             type === Camera.Constants.Type.back

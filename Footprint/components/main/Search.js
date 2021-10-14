@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 //import { View, Text, TextInput, FlatList, TouchableOpacity } from 'react-native'
 
 import firebase from 'firebase';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import * as Animatable from 'react-native-animatable';
 require('firebase/firestore');
 
@@ -99,9 +100,14 @@ export default function Search(props) {
             animation="fadeInUpBig"
             style={styles.footer}
         >
+             <FontAwesome 
+                name="search"
+                color="#05375a"
+                size={20}
+             /> <br></br>
             <TextInput
                 style={styles.textInput}
-                placeholder="Type Here..."
+                placeholder="    Type Here..."
                 onChangeText={(search) => fetchUsers(search)} />
 
             <FlatList

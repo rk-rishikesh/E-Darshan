@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, Image, FlatList, Button } from 'react-native'
 import firebase from 'firebase'
 require('firebase/firestore')
 import { connect } from 'react-redux'
-
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 var current_latitude;
 var current_longitude;
 
@@ -45,33 +45,25 @@ function Feed(props) {
                     data={posts}
                     renderItem={({ item }) => (
 
-                   
-                        <View
-                            style={styles.containerImage}>
-                            <Text style={styles.container}>{item.user.name}</Text>
-                            <Text>Latitude={item.Latitude}</Text>
+                        <View style={styles.containerImage}>
+                            <View style= {{flexDirection:'row'}}>
+                                <FontAwesome 
+                                name="user-circle"
+                                color="#05375a"
+                                size={15}
+                                />
+                            <Text style={styles.text_footer} >  {item.user.name}</Text>
+                            </View>
+                            {/* <Text style={styles.text_footer}>Latitude={item.Latitude}</Text> */}
                             <Image
                                 style={{width: '100%', height: 200,resizeMode : 'stretch' }}
                                 source={{ uri: item.downloadURL }}
                             />
-                            {/* { item.currentUserLike ?
-                                (
-                                    <Button
-                                        title="Dislike"
-                                        onPress={() => onDislikePress(item.user.uid, item.id)} />
-                                )
-                                :
-                                (
-                                    <Button
-                                        title="Like"
-                                        onPress={() => onLikePress(item.user.uid, item.id)} />
-                                )
-                            } */}
-                            
+                            {/*                             
                             <Text
                                 onPress={() => props.navigation.navigate('Comment', { postId: item.id, uid: item.user.uid })}>
                                 View Comments...
-                                </Text>
+                                </Text> */}
                                 <br></br>
                         </View>
 
@@ -88,6 +80,7 @@ function Feed(props) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#ffffff'
     },
     containerInfo: {
         margin: 20
@@ -96,13 +89,19 @@ const styles = StyleSheet.create({
         flex: 1
     },
     containerImage: {
-        flex: 1 / 3
+        flex: 1 / 3,
+        padding: 10
 
     },
     image: {
         flex: 1,
         aspectRatio: 1 / 1
-    }
+    },
+    text_footer: {
+        color: '#2f4f4f',
+        fontSize: 15,
+        flexDirection:'column'
+    },
 })
 const mapStateToProps = (store) => ({
     currentUser: store.userState.currentUser,
