@@ -37,32 +37,32 @@ export default function Landing({ navigation }) {
                 onPress={() => navigation.navigate("Register"), console.log("fcrfc")} 
                 style = {{width:'35%', height: '10%', marginLeft: 59}}/>
             </View> */}
-            <View >
+            <View style = {{marginTop:'100%', marginLeft: '30%'}}>
             <Button
             icon={
                 <Icon
                   name="user-circle"
-                  size={15}
+                  size={30}
                   color="white"
                 />
               }
-                title=" Register"
+                title="  Register"
                 onPress={() => navigation.navigate("Register")} 
-                style = {{width:'42%', height: '10%'}}/>
+                style = {{width:'60%', height: '50%'}}/>
             </View>
 
-            <View style = {{marginTop:'-15%', marginLeft: '40%'}}>
+            <View style = {{marginTop:'0%', marginLeft: '30%'}}>
             <Button
             icon={
                 <Icon
                   name="unlock-alt"
-                  size={15}
+                  size={30}
                   color="white"
                 />
               }
-                title=" Login"
+                title="  Login"
                 onPress={() => navigation.navigate("Login")} 
-                style = {{width:'42%', height: '10%', marginTop: 78 }}/>
+                style = {{width:'60%', height: '50%', marginTop: 60 }}/>
             </View>
         </ImageBackground>
          </View>         

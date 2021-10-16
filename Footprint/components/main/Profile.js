@@ -29,14 +29,18 @@ const styles = StyleSheet.create({
             margin: 20
     },
     containerimg: {
-        flex: 3,
+        flex: 1,
         flexDirection: 'row',
     },
     containerGallery: {
         flex: 1
     },
     containerImage: {
-        flex: 1 / 3
+        flex: 1,
+        paddingBottom:'5%',
+        paddingTop:'5%',
+        paddingLeft:'5%',
+        paddingRight:'5%',
 
     },
     image: {
@@ -176,8 +180,8 @@ function Profile(props) {
         return <View />
     }
     return (
-  <View>
-      
+        <ScrollView>
+        <View>
         <View style={styles.container}>
             <View style={styles.containerInfo}>
                 <View style= {{flexDirection:'row'}}>
@@ -195,7 +199,7 @@ function Profile(props) {
                 {/* <Text>Images</Text> */}
 
                 {props.route.params.uid !== firebase.auth().currentUser.uid ? (
-                    <View>
+                    <View style = {{marginTop:'10%', marginLeft: '0%'}}>
                         {following ? (
                             <Button
                                 title="Following"
@@ -206,6 +210,7 @@ function Profile(props) {
                                 <Button
                                     title="Follow"
                                     onPress={() => onFollow()}
+                                    color="#2f4f4f"
                                 />
                             )}
                     </View>
@@ -222,7 +227,7 @@ function Profile(props) {
             <View style={styles.containerGallery}>
             {/* <Text>Imagesfeed</Text> */}
                 <FlatList
-                    numColumns={2}
+                    numColumns={1}
                     horizontal={false}
                     data={userPosts}
                     renderItem={({ item }) =>
@@ -241,7 +246,9 @@ function Profile(props) {
                 />
             </View>
         </View>
-        </View>   
+        </View> 
+        </ScrollView>
+          
     )
 }
 

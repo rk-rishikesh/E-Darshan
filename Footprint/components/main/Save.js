@@ -1,8 +1,86 @@
 import React, { useState } from 'react'
-import { View, TextInput, Image, Button } from 'react-native'
+import { View, TextInput, Image} from 'react-native'
 import Geolocation from '@react-native-community/geolocation';
 import firebase from 'firebase'
 import { NavigationContainer } from '@react-navigation/native'
+import {  
+    Text,
+    TouchableOpacity, 
+    Dimensions,
+    Platform,
+    StyleSheet,
+    ScrollView,
+    StatusBar,
+    Button,
+  } from 'react-native';
+  import * as Animatable from 'react-native-animatable';
+import { color } from 'react-native-reanimated';
+
+  const styles = StyleSheet.create({
+    container: {
+        flex: 1, 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        backgroundColor: '#808080',
+
+      },
+    
+        cameraContainer: {
+          flex: 1,
+          flexDirection: 'row'
+        },
+        fixedRatio: {
+          flex: 1,
+          aspectRatio: 1
+        },
+      
+        header: {
+            flex: 1,
+            justifyContent: 'center',
+            paddingHorizontal: 20,
+            paddingBottom: 50
+        },
+        footer: {
+          backgroundColor: '#fff',
+          borderTopLeftRadius: 30,
+          borderTopRightRadius: 30,
+          paddingHorizontal: 100,
+          paddingVertical: 70,
+          marginLeft: 34,
+          alignContent: 'flex-end',
+          marginTop:300,
+      },
+        text_header: {
+            color: '#fff',
+            fontWeight: 'bold',
+            fontSize: 40,
+            marginLeft: 100,
+        },
+        action: {
+            flexDirection: 'row',
+            marginTop: 10,
+            borderBottomWidth: 1,
+            borderBottomColor: '#f2f2f2',
+            paddingBottom: 5,
+            backgroundColor:'black',
+        },
+        textInput: {
+            flex: 1,
+            paddingLeft: 10,
+            color: '#808080',
+            fontSize:40,
+            height: 60,
+            borderWidth:0,
+            marginTop:20,
+        },
+        button: {
+            alignItems: 'center',
+            marginTop: 50
+        },
+  });
+
+
+
 require("firebase/firestore")
 require("firebase/firebase-storage")
 
@@ -73,16 +151,27 @@ export default function Save(props) {
 });
 
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{backgroundColor:'black', height: '100%'}}> 
             <Image source={{ uri: props.route.params.image }} />
+            <View style={{backgroundColor:'black'}}>
+                <Text style={{color:'white', fontSize:'300%', fontWeight:'bold'}}> Caption ! </Text>
             <TextInput
-                placeholder="Write a Caption . . ."
+                style={styles.textInput}
+                placeholder="Write a Caption... "
                 onChangeText={(caption) => setCaption(caption)}
             />
-            <Button title=" Get Latitude " onPress={() => setLatitude(Latitude+latitude)} />
-            <Button title=" Get Longitude " onPress={() => setLongitude(Longitude+longitude)} />
-            <Button title="Save" onPress={() => uploadImage()} />
-
+            </View>
+            <View style={styles.action}>
+            <Animatable.View 
+            animation="fadeInUpBig"
+            style={styles.footer}
+            >
+            <Button title=" Get Latitude " onPress={() => setLatitude(Latitude+latitude)} color="#d2b48c"/> <br></br>
+            <Button title=" Get Longitude " onPress={() => setLongitude(Longitude+longitude)} color="#d2b48c"/> <br></br>
+            <Button title="Save" onPress={() => uploadImage()} color="#d2b48c"/>
+            </Animatable.View>
+            
+           </View>
         </View>
     )
 }

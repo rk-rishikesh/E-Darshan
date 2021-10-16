@@ -40,6 +40,7 @@ import SaveScreen from './components/main/Save'
 import CommentScreen from './components/main/Comment'
 import PackageScreen from './components/main/AddPackage'
 import SavePackageScreen from './components/main/SavePackage'
+import { TextInput } from 'react-native-gesture-handler';
 
 
 const Stack = createStackNavigator();
@@ -91,17 +92,28 @@ export class App extends Component {
     }
 
     return (
-
       <Provider store={store}>
-                <Icon path={mdiShoePrint}size={2}
-        horizontal
-        vertical
-        rotate={90}
-        color="black"
-        spin/>
+          <View style= {{flexDirection:'row'}}>       
+          
+        {/* <Text style={{}}>Footprints</Text> */}
+       </View>
         <NavigationContainer >
             <Stack.Navigator initialRouteName="Main">
-            <Stack.Screen name="Footprint" component={MainScreen} />
+            <Stack.Screen name="Footprint" component={MainScreen}  options={{title: 'Footprint', headerStyle:{
+              backgroundColor: '#fffaf0',
+            },
+            headerTitleStyle:{
+              fontWeight: 'bold',
+            },
+            headerLeft:() =>(
+              <Icon path={mdiShoePrint}size={2}
+              horizontal
+              vertical
+              rotate={90}
+              color="black"
+              spin/>
+            ) ,
+            }}/>
             <Stack.Screen name="Add" component={AddScreen} navigation={this.props.navigation}/>
             <Stack.Screen name="Save" component={SaveScreen} navigation={this.props.navigation}/>
             <Stack.Screen name="Comment" component={CommentScreen} navigation={this.props.navigation}/>
@@ -115,3 +127,6 @@ export class App extends Component {
 }
 
 export default App
+
+
+//EMAIL- fadnaviskv@gmail.com pass- 12345KETKI  ritul11@gmail.com pass- 1234RITUL
