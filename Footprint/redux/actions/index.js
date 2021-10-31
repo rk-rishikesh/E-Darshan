@@ -3,7 +3,6 @@ import firebase from 'firebase'
 import { SnapshotViewIOSComponent } from 'react-native'
 require('firebase/firestore')
 
-
 export function clearData() {
     return ((dispatch) => {
         dispatch({type: CLEAR_DATA})
