@@ -39,6 +39,7 @@ export default function Landing({ navigation }) {
             </View> */}
             <View style = {{marginTop:'100%', marginLeft: '30%'}}>
             <Button
+            
             icon={
                 <Icon
                   name="user-circle"
@@ -46,13 +47,16 @@ export default function Landing({ navigation }) {
                   color="white"
                 />
               }
+              
                 title="  Register"
+                color="#f194ff"
                 onPress={() => navigation.navigate("Register")} 
                 style = {{width:'60%', height: '50%'}}/>
             </View>
 
             <View style = {{marginTop:'0%', marginLeft: '30%'}}>
             <Button
+            
             icon={
                 <Icon
                   name="unlock-alt"

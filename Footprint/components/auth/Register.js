@@ -25,7 +25,7 @@ import "firebase/firestore";
 const styles = StyleSheet.create({
     container: {
       flex: 1, 
-      backgroundColor: '#009387'
+      backgroundColor: '#b0c4de'
     },
     header: {
         flex: 1,
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         fontSize: 40
     },
     text_footer: {
-        color: '#05375a',
+        color: '#000080',
         fontSize: 18
     },
     action: {
@@ -136,7 +136,7 @@ class Register extends Component {
             <View style={styles.action}>
                 <FontAwesome 
                     name="user-o"
-                    color="#05375a"
+                    color="#000080"
                     size={20}
                 />
                 <TextInput
@@ -149,7 +149,7 @@ class Register extends Component {
             <View style={styles.action}>
             <FontAwesome 
                     name="envelope-o"
-                    color="#05375a"
+                    color="#000080"
                     size={20}
                 />
             <TextInput
@@ -162,7 +162,7 @@ class Register extends Component {
         <View style={styles.action}>
              <Feather 
                     name="lock"
-                    color="#05375a"
+                    color="#000080"
                     size={20}
                 />
                 <TextInput

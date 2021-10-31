@@ -32,11 +32,10 @@ function Feed(props) {
         console.log("current position lo:",current_latitude,"lg:",current_longitude)
 });
 
-//if(item.Longitude === current_latitude  && item.Latitude === current_longitude){ 
+
     return (
         
         <View style={styles.container}>
-         
             <View style={styles.containerGallery}>
             
                 <FlatList
@@ -44,7 +43,8 @@ function Feed(props) {
                     horizontal={false}
                     data={posts}
                     renderItem={({ item }) => (
-
+                    // if(item.Longitude === current_latitude  && item.Latitude === current_longitude){ 
+                    //     return (
                         <View style={styles.containerImage}>
                             <View style= {{flexDirection:'row'}}>
                                 <FontAwesome 
@@ -59,6 +59,9 @@ function Feed(props) {
                                 style={{width: '100%', height: 200,resizeMode : 'stretch' }}
                                 source={{ uri: item.downloadURL }}
                             />
+                            
+                        
+
                             {/*                             
                             <Text
                                 onPress={() => props.navigation.navigate('Comment', { postId: item.id, uid: item.user.uid })}>
@@ -66,8 +69,8 @@ function Feed(props) {
                                 </Text> */}
                                 <br></br>
                         </View>
-
-                    )}
+                        //   )  }
+                     ) }
 
                 />
             </View>
@@ -75,7 +78,7 @@ function Feed(props) {
 
     )
 }
-//}
+
 
 const styles = StyleSheet.create({
     container: {

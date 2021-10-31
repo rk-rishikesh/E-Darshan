@@ -100,7 +100,7 @@ export class App extends Component {
         <NavigationContainer >
             <Stack.Navigator initialRouteName="Main">
             <Stack.Screen name="Footprint" component={MainScreen}  options={{title: 'Footprint', headerStyle:{
-              backgroundColor: '#fffaf0',
+              backgroundColor: '#f0f8ff',
             },
             headerTitleStyle:{
               fontWeight: 'bold',
